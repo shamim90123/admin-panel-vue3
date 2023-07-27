@@ -233,6 +233,7 @@ const errorRoutes = (prefix) => [
     name: prefix + '.404',
     meta: { auth: true, name: 'Error 404', isBanner: true },
     component: () => import('@/views/errors/Error404Page.vue')
+    // component: () => import('@/views/errors/Error404Page.vue')
   },
   {
     path: '500',
