@@ -6,7 +6,7 @@ const designSystemChildRoutes = (prefix) => [
     path: '',
     name: prefix + '.main',
     meta: { auth: true, name: 'Design System' },
-    component: () => import('@/views/design-system/IndexPage.vue')
+    component: () => import('@/views/built-in-views/design-system/IndexPage.vue')
   }
 ]
 // Auth Default Routes

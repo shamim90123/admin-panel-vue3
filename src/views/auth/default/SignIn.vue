@@ -11,18 +11,18 @@
               </router-link>
               <h2 class="mb-2 text-center">Sign In</h2>
               <p class="text-center">Login to stay connected.</p>
-              <form>
+              <form @submit.prevent="login">
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label for="email" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=" " />
+                      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=" " v-model="username" />
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " />
+                      <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " v-model="password" />
                     </div>
                   </div>
                   <div class="col-lg-12 d-flex justify-content-between">
@@ -76,6 +76,50 @@
   </section>
 </template>
 
-<script setup></script>
+
+<script>
+// import api_config
+import { authServiceBaseURL } from '@/config/api_config.js'
+import axios from 'axios'
+
+export default {
+  name: 'LoginForm',
+  data() {
+    return {
+      username: 'opt.shamim@gmail.com',
+      password: '123456'
+    }
+  },
+  created () {
+    console.log('Login Created')
+    console.log(authServiceBaseURL)
+  },
+  methods: {
+    async login() {
+      // You can use Axios or fetch API to send a login request to the server
+      const loginData = {
+        email: this.username,
+        password: this.password
+      }
+
+       // Make the API call using Axios
+    axios.post('http://127.0.0.1:8000/api/auth/login', loginData)
+      .then(response => {
+        console.log('Login successful!', response)
+        this.$router.push('/home')
+      })
+      .catch(error => {
+        console.error('Login failed:', error.response.data);
+      });
+
+
+    },
+    changeLanguage() {
+      const newLocale = this.$i18n.locale === 'en' ? 'bn' : 'en';
+      this.$i18n.locale = newLocale;
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped></style>
