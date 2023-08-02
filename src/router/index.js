@@ -40,6 +40,12 @@ const authChildRoutes = (prefix) => [
     name: prefix + '.lock-screen',
     meta: { auth: false, name: 'Lock Screen' },
     component: () => import('@/views/auth/default/LockScreen.vue')
+  },
+  {
+    path: 'home',
+    name: prefix + '.home',
+    meta: { auth: false, name: 'Home Page' },
+    component: () => import('@/views/auth/default/home.vue')
   }
 ]
 

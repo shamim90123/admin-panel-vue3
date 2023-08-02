@@ -1,29 +1,30 @@
 <template>
   <div class="card-container">
     <!-- <p v-t="'student_management'"></p> -->
-    {{ homeData }}
-    <Card v-for="card in cards" :key="card.id" :title="card.title" :description="card.description" />
+    <!-- {{ homeData }} -->
+    <Card v-for="card in homeData" :key="card.id" :title="card.name_en" :description="card.description" />
   </div>
 </template>
 
 <script>
-import Card from "@/components/common/Card.vue";
+import Card from "@/components/common/Card.vue"
 import axios from 'axios'
+import { commonServiceBaseURL } from '@/config/api_config.js'
 
 export default {
   name: 'HomePage',
   components: {
-    Card,
+    Card
   },
   data() {
     return {
       homeData: {},
       cards: [
-        { id: 1, title: this.$t('student_management'), description:  "This is the student management description." },
-        { id: 2, title: this.$t('teacher_management'), description: "This is the description for teacher management." },
-        { id: 3, title: this.$t('parent_management'), description: "This is the description for parent management." },
-        { id: 4, title: this.$t('class_management'), description: "This is the description for class management." },
-        { id: 5, title: this.$t('section_management'), description: "This is the description for section management." },
+        { id: 1, title: 'student_management', description:  "This is the student management description." },
+        { id: 2, title: 'teacher_management', description: "This is the description for teacher management." },
+        { id: 3, title: 'parent_management', description: "This is the description for parent management." },
+        { id: 4, title: 'class_management', description: "This is the description for class management." },
+        { id: 5, title: 'section_management', description: "This is the description for section management." },
       ],
     };
   },
@@ -34,7 +35,7 @@ export default {
   methods: {
     async loadData() {
         // Make the API call using Axios
-        axios.get('http://127.0.0.1:8001/get-components')
+        axios.get(commonServiceBaseURL + '/get-components')
         .then(response => {
           // Handle the successful response
           this.homeData = response.data;
@@ -45,7 +46,7 @@ export default {
         });
   }
 }
-};
+}
 </script>
 
 <style scoped>

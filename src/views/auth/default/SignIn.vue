@@ -106,7 +106,7 @@ export default {
     axios.post('http://127.0.0.1:8000/api/auth/login', loginData)
       .then(response => {
         console.log('Login successful!', response)
-        this.$router.push('/home')
+        this.$router.push('/auth/home')
       })
       .catch(error => {
         console.error('Login failed:', error.response.data);
