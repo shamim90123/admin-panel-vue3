@@ -105,7 +105,12 @@ export default {
        // Make the API call using Axios
     axios.post('http://127.0.0.1:8000/api/auth/login', loginData)
       .then(response => {
-        console.log('Login successful!', response)
+        console.log('Login successful!', response.data.access_token)
+        localStorage.clear()
+        // localStorage.setItem('access_token', result.access_token)
+        // Set token for 72 Hours
+        localStorage.setItem('userDetail', response.data.access_token)
+
         this.$router.push('/auth/home')
       })
       .catch(error => {
