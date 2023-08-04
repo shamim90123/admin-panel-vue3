@@ -23,7 +23,7 @@
 import { ref, computed } from 'vue'
 import IconComponent from '@/components/icons/IconComponent.vue'
 import ArrIcons from '@/assets/icons.json'
-import { copyToClipboard } from '../../utilities/dom'
+import { copyToClipboard } from '../../../utilities/dom'
 export default {
   components: {
     IconComponent

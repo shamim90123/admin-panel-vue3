@@ -20,7 +20,7 @@
 <script>
 import { ref } from 'vue'
 import ArrIcons from '@/assets/icons.json'
-import { copyToClipboard } from '../../utilities/dom'
+import { copyToClipboard } from '../../../utilities/dom'
 export default {
   components: {},
   setup() {
